@@ -32,6 +32,7 @@ const Navbar = () => {
         <Link
           href={"/"}
           className="text-2xl md:text-5xl text-white font-semibold"
+          onClick={() => setNavbarOpen(false)}
         >
           Logo
         </Link>
@@ -62,7 +63,13 @@ const Navbar = () => {
           </ul>
         </div>
       </div>
-      {navbarOpen ? <MenuOverlay links={navLinks} /> : null}
+      {navbarOpen ? (
+        <MenuOverlay
+          links={navLinks}
+          setNavbarOpen={setNavbarOpen}
+          navbarOpen={navbarOpen}
+        />
+      ) : null}
     </nav>
   );
 };

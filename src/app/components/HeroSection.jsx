@@ -8,26 +8,29 @@ const HeroSection = () => {
     <section>
       <div className="grid grid-cols-1 sm:grid-cols-12">
         <div className="col-span-7 place-self-center text-center sm:text-left">
-          <h1 className="text-white mb-4 text-4xl sm:text-5xl lg:text-6xl font-extrabold">
-            <span className="text-transparent bg-clip-text bg-gradient-to-br from-[#fd9800] to-[#9a031e]">
-              Hello I&apos;m{" "}
-            </span>
-            <TypeAnimation
-              sequence={[
-                "Bryan",
-                1000,
-                "Web Developer",
-                1000,
-                "Mobile Developer",
-                1000,
-                "UI/UX Designer",
-                1000,
-              ]}
-              wrapper="span"
-              speed={50}
-              repeat={Infinity}
-            />
-          </h1>
+          <div className=" h-28 lg:h-auto">
+            <h1 className="text-white mb-4 text-4xl sm:text-5xl lg:text-6xl font-extrabold">
+              <span className="text-transparent bg-clip-text bg-gradient-to-br from-[#fd9800] to-[#9a031e]">
+                Hello I&apos;m{" "}
+              </span>
+              <TypeAnimation
+                sequence={[
+                  "Bryan",
+                  1000,
+                  "a Web Developer",
+                  1000,
+                  "a Mobile Developer",
+                  1000,
+                  "a UI/UX Designer",
+                  1000,
+                ]}
+                wrapper="span"
+                speed={50}
+                repeat={Infinity}
+              />
+            </h1>
+          </div>
+
           <p className="text-[#ADB7BE] text-base sm:text-lg lg:text-xl mb-6">
             Welcome to my personal website, where creativity meets technology to
             transform your digital presence.
