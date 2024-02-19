@@ -48,13 +48,13 @@ const HeroSection = () => {
           </div>
         </div>
         <div className="col-span-5 place-self-center mt-4 lg:mt-0">
-          <div className="rounded-full bg-[#181818] w-[250px] h-[250px] lg:w-[400px] lg:h-[400px] relative">
+          <div className="rounded-full bg-[#181818] w-[250px] h-[250px] lg:w-[300px] lg:h-[300px] relative">
             <Image
               src="/bryan.jpeg"
               alt="Hero Image"
               width={300}
               height={300}
-              className="rounded-full absolute transform w-[250px] h-[250px] lg:w-[400px] lg:h-[400px] -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+              className="rounded-full absolute transform w-[250px] h-[250px] lg:w-[300px] lg:h-[300px] -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
             />
           </div>
         </div>
