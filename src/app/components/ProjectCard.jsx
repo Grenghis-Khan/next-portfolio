@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { CodeBracketIcon, EyeIcon } from "@heroicons/react/24/outline";
 
 const ProjectCard = ({ imgUrl, title, description, gitUrl, previewUrl }) => {
@@ -7,15 +8,23 @@ const ProjectCard = ({ imgUrl, title, description, gitUrl, previewUrl }) => {
     <div>
       <div
         className="h-52 md:h-72 rounded-t-xl relative group"
-        style={{
-          background: `url(${imgUrl})`,
-          backgroundSize: "contain",
-          backgroundRepeat: "no-repeat",
-          marginLeft: "auto",
-          marginRight: `${imgUrl === "/oneCTRL.png" ? "auto" : 0}`,
-          width: `${imgUrl === "/oneCTRL.png" ? "36%" : ""}`,
-        }}
+        // style={{
+        //   background: `url(${imgUrl})`,
+        //   backgroundSize: "contain",
+        //   backgroundRepeat: "no-repeat",
+        //   marginLeft: "auto",
+        //   marginRight: `${imgUrl === "/oneCTRL.png" ? "auto" : 0}`,
+        //   width: `${imgUrl === "/oneCTRL.png" ? "36%" : ""}`,
+        // }}
       >
+        <Image
+          src={imgUrl}
+          alt="oneCTRL Image"
+          // width={300}
+          // height={300}
+          fill={true}
+          className="rounded-t-xl object-cover"
+        />
         <div className="overlay items-center justify-center absolute top-0 left-0 w-full h-full bg-[#181818] bg-opacity-0 hidden group-hover:flex group-hover:bg-opacity-80 transition-all duration-500">
           <Link
             href={previewUrl}

@@ -5,6 +5,7 @@ import ServicesSection from "./components/ServicesSection";
 import ProjectsSection from "./components/ProjectsSection";
 import EmailSection from "./components/EmailSection";
 import Footer from "./components/Footer";
+import AchievementsSection from "./components/AchievementsSection";
 
 const Homepage = () => {
   return (
@@ -13,11 +14,12 @@ const Homepage = () => {
       <div className="container mt-24 mx-auto px-12 py-4">
         <HeroSection />
         <AboutSection />
+        <AchievementsSection />
         <ServicesSection />
         <ProjectsSection />
         <EmailSection />
-        <Footer />
       </div>
+      <Footer />
     </main>
   );
 };

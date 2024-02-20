@@ -43,7 +43,6 @@ const EmailSection = () => {
       id="contact"
       className="grid md:grid-cols-2 my-12 md:my-12 py-24 gap-4 relative"
     >
-      <div className="bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#fd9800] to-transparent rounded-full h-80 w-80 z-0 blur-lg absolute top-3/4 -left-4 transform -translate-x-1/2 -translate-1/2"></div>
       <div className="z-10">
         <h5 className="text-xl font-bold text-white my-2">
           Let&apos;s Bring Your Vision to Life
@@ -52,7 +51,7 @@ const EmailSection = () => {
           My inbox is always open. Whether you have a question or just want to
           say hi, I&apos;ll try my best to get back to you!
         </p>
-        <div className="socials flex flex-row gap-2 mb-12">
+        <div className="socials flex flex-row gap-2 mb-12 justify-center md:justify-normal">
           <Link
             href="https://github.com/Grenghis-Khan"
             target="_blank"
@@ -62,7 +61,7 @@ const EmailSection = () => {
           </Link>
         </div>
       </div>
-      <div>
+      <div className="z-10">
         <form className="flex flex-col" onSubmit={handleSubmit}>
           <div className="mb-6">
             <label
@@ -112,7 +111,7 @@ const EmailSection = () => {
           </div>
           <button
             type="submit"
-            className="bg-[#fd9800] hover:bg-[#e67b1e] text-white font-medium py-2.5 px-5 rounded-lg w-full"
+            className="bg-primary-500 hover:bg-primary-600 text-white font-medium py-2.5 px-5 rounded-lg w-full"
           >
             Send Message
           </button>
@@ -126,6 +125,7 @@ const EmailSection = () => {
           }
         </form>
       </div>
+      <div className="bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary-500 to-transparent rounded-full h-80 w-80 z-0 blur-lg absolute top-3/4 -left-4 transform -translate-x-1/2 -translate-1/2"></div>
     </section>
   );
 };

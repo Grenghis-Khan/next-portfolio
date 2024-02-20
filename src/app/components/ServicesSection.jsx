@@ -49,7 +49,7 @@ const SERVICE_DATA = [
 
 const ServicesSection = () => {
   return (
-    <section id="services" className="scroll-mt-16 md:scroll-mt-24">
+    <section id="services" className="scroll-mt-24">
       <h2 className="text-center text-4xl font-bold text-white mt-4 mb-8 md:mb-12">
         My Services
       </h2>
