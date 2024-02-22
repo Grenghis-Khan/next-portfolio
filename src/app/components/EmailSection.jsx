@@ -7,7 +7,7 @@ import GithubIcon from "./../../../public/github-icon.svg";
 import emailjs from "@emailjs/browser";
 
 const EmailSection = () => {
-  const [emailSubmitted, setEmailSubmitted] = useState(false);
+  const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
 
   //-----------used for sending email via EmailJS-------------------//
@@ -16,7 +16,7 @@ const EmailSection = () => {
   const sendEmail = (e) => {
     e.preventDefault();
     setError(false);
-    setEmailSubmitted(false);
+    setSuccess(false);
 
     emailjs
       .sendForm(
@@ -29,7 +29,7 @@ const EmailSection = () => {
       )
       .then(
         () => {
-          setEmailSubmitted(true);
+          setSuccess(true);
           form.current.reset();
         },
         () => {
@@ -38,40 +38,6 @@ const EmailSection = () => {
       );
   };
   //-----------used for sending email via EmailJS-------------------//
-
-  //-----------used for api router/resend-------------------//
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   const data = {
-  //     email: e.target.email.value,
-  //     subject: e.target.subject.value,
-  //     message: e.target.message.value,
-  //   };
-
-  //   const JSONdata = JSON.stringify(data);
-  //   const endpoint = "/api/send";
-
-  //   // Form the request for sending data to the server.
-  //   const options = {
-  //     // The method is POST because we are sending data.
-  //     method: "POST",
-  //     // Tell the server we're sending JSON.
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     // Body of the request is the JSON data we created above.
-  //     body: JSONdata,
-  //   };
-
-  //   const response = await fetch(endpoint, options);
-  //   const resData = await response.json();
-
-  //   if (response.status === 200) {
-  //     console.log("Message sent.");
-  //     setEmailSubmitted(true);
-  //   }
-  // };
-  //-----------used for api router/resend-------------------//
 
   return (
     <section
@@ -164,7 +130,7 @@ const EmailSection = () => {
           </motion.div>
           {
             //if the email was submitted successfull, show a success message.
-            emailSubmitted && (
+            success && (
               <p className="text-green-500 text-sm mt-2">
                 Email sent successfully!
               </p>
