@@ -1,57 +1,67 @@
 "use client";
 import React, { useState, useTransition } from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import TabButton from "./TabButton";
+
+const tabs = ["Skills", "Education", "Certifications"];
 
 const TAB_DATA = [
   {
     title: "Skills",
-    id: "skills",
+    id: "Skills",
     content: (
       <div className="flex flex-row">
-        <ul className="list-disc pl-2">
-          <li>Javascript</li>
-          <li>Node.js</li>
-          <li>Express</li>
-          <li>MongoDB</li>
-          <li>Firebase</li>
-          <li>React</li>
+        <ul className="list-disc pl-4">
+          <li className="mb-1">Javascript</li>
+          <li className="mb-1">Node.js</li>
+          <li className="mb-1">Express</li>
+          <li className="mb-1">MongoDB</li>
+          <li className="mb-1">Firebase</li>
+          <li className="mb-1">React</li>
         </ul>
 
-        <ul className=" ml-16 list-disc pl-2">
-          <li>HTML</li>
-          <li>CSS</li>
-          <li>APIs</li>
-          <li>Authentication</li>
-          <li>Ladder Logic</li>
-          <li>Circuit Design</li>
+        <ul className=" ml-6 md:ml-16 list-disc pl-2">
+          <li className="mb-1">HTML</li>
+          <li className="mb-1">CSS</li>
+          <li className="mb-1">APIs</li>
+          <li className="mb-1">Authentication</li>
+          <li className="mb-1">Ladder Logic</li>
+          <li className="mb-1">Circuit Design</li>
         </ul>
       </div>
     ),
   },
   {
     title: "Education",
-    id: "education",
+    id: "Education",
     content: (
-      <ul className="list-disc pl-2">
-        <li>The Complete 2023 Web Development Bootcamp - Udemy</li>
-        <li>BS Electrical Engineering - University of Colorado Denver</li>
+      <ul className="list-disc pl-4">
+        <li className="mb-1">
+          The Complete 2023 Web Development Bootcamp - Udemy
+        </li>
+        <li className="mb-1">
+          BS Electrical Engineering - University of Colorado Denver
+        </li>
       </ul>
     ),
   },
   {
     title: "Certifications",
-    id: "certifications",
+    id: "Certifications",
     content: (
-      <ul className="list-disc pl-2">
-        <li>Javascript Algorithms and Data Structures - FreeCodeCamp</li>
+      <ul className="list-disc pl-4">
+        <li className="mb-1">
+          Javascript Algorithms and Data Structures - FreeCodeCamp
+        </li>
       </ul>
     ),
   },
 ];
 
 const AboutSection = () => {
-  const [tab, setTab] = useState("skills");
+  const [tab, setTab] = useState("Skills");
+  const [selectedTab, setSelectedTab] = useState(tabs[0]);
   const [isPending, startTransition] = useTransition();
 
   const handleTabChange = (id) => {
@@ -60,7 +70,7 @@ const AboutSection = () => {
     });
   };
   return (
-    <section className="text-white scroll-mt-16 " id="about">
+    <section className="text-white scroll-mt-16" id="about">
       <div className="md:grid md:grid-cols-2 gap-8 items-center py-8 px-4 xl:gap-16 sm:py-16 xl:px-16">
         <Image
           src="/working.jpg"
@@ -79,8 +89,8 @@ const AboutSection = () => {
             not only visually appealing but also technologically robust,
             ensuring a cutting-edge online presence for my clients.
           </p>
-          <div className="flex flex-row justify-start mt-8">
-            <TabButton
+          <div className="flex flex-row justify-center  md:justify-start mt-8">
+            {/* <TabButton
               selectTab={() => handleTabChange("skills")}
               active={tab === "skills"}
             >
@@ -100,9 +110,33 @@ const AboutSection = () => {
             >
               {" "}
               Certifications{" "}
-            </TabButton>
+            </TabButton> */}
+            {/* <div> */}
+            {tabs.map((item, index) => (
+              <button
+                key={index}
+                className={
+                  item === selectedTab
+                    ? "text-white m-2 mr-4"
+                    : "text-[#ADB7BE] m-2 mr-4"
+                }
+                onClick={() => {
+                  setSelectedTab(item);
+                  setTab(item);
+                }}
+              >
+                <p className={` font-semibold hover:text-white `}>{item}</p>
+                {item === selectedTab ? (
+                  <motion.div
+                    className=" bottom-[-2px] left-0 right-0 h-[2px] bg-primary-500"
+                    layoutId="underline"
+                  />
+                ) : null}
+              </button>
+            ))}
+            {/* </div> */}
           </div>
-          <div className="mt-8 h-40">
+          <div className="mt-4 h-40">
             {TAB_DATA.find((t) => t.id === tab).content}
           </div>
         </div>

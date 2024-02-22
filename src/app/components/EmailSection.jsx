@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import GithubIcon from "./../../../public/github-icon.svg";
 
 const EmailSection = () => {
@@ -52,13 +53,19 @@ const EmailSection = () => {
           say hi, I&apos;ll try my best to get back to you!
         </p>
         <div className="socials flex flex-row gap-2 mb-12 justify-center md:justify-normal">
-          <Link
-            href="https://github.com/Grenghis-Khan"
-            target="_blank"
-            rel="noreferrer noopener"
+          <motion.div
+            whileHover={{ scale: 1 }}
+            whileTap={{ scale: 0.85 }}
+            transition={{ type: "spring", stiffness: 200, damping: 20 }}
           >
-            <Image src={GithubIcon} alt="Github Icon" />
-          </Link>
+            <Link
+              href="https://github.com/Grenghis-Khan"
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              <Image src={GithubIcon} alt="Github Icon" />
+            </Link>
+          </motion.div>
         </div>
       </div>
       <div className="z-10">
@@ -109,12 +116,18 @@ const EmailSection = () => {
               placeholder="Let's talk about..."
             />
           </div>
-          <button
-            type="submit"
-            className="bg-primary-500 hover:bg-primary-600 text-white font-medium py-2.5 px-5 rounded-lg w-full"
+          <motion.div
+            whileHover={{ scale: 1 }}
+            whileTap={{ scale: 0.85 }}
+            transition={{ type: "spring", stiffness: 200, damping: 20 }}
           >
-            Send Message
-          </button>
+            <button
+              type="submit"
+              className="bg-primary-500 hover:bg-primary-600 text-white font-medium py-2.5 px-5 rounded-lg w-full"
+            >
+              Send Message
+            </button>
+          </motion.div>
           {
             //if the email was submitted successfull, show a success message.
             emailSubmitted && (

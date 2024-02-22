@@ -28,6 +28,7 @@ const achievementsList = [
     value: "1",
   },
   {
+    prefix: "~",
     metric: "Years",
     value: "2",
   },
@@ -36,7 +37,7 @@ const achievementsList = [
 const AchievementsSection = () => {
   return (
     <div className="py-8 px-4 xl:gap-16 sm:py-16 xl:px-16">
-      <div className="border-[#33353F] border rounded-md py-8 px-17 flex flex-col md:flex-row items-center justify-between">
+      <div className="border-[#33353F] border rounded-md py-8 px-10 flex flex-col md:flex-row items-center justify-between">
         {achievementsList.map((achievement, index) => {
           return (
             <div
