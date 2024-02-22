@@ -1,43 +1,77 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import GithubIcon from "./../../../public/github-icon.svg";
+import emailjs from "@emailjs/browser";
 
 const EmailSection = () => {
   const [emailSubmitted, setEmailSubmitted] = useState(false);
-  const handleSubmit = async (e) => {
+  const [error, setError] = useState(false);
+
+  //-----------used for sending email via EmailJS-------------------//
+  const form = useRef();
+
+  const sendEmail = (e) => {
     e.preventDefault();
-    const data = {
-      email: e.target.email.value,
-      subject: e.target.subject.value,
-      message: e.target.message.value,
-    };
+    setError(false);
+    setEmailSubmitted(false);
 
-    const JSONdata = JSON.stringify(data);
-    const endpoint = "/api/send";
-
-    // Form the request for sending data to the server.
-    const options = {
-      // The method is POST because we are sending data.
-      method: "POST",
-      // Tell the server we're sending JSON.
-      headers: {
-        "Content-Type": "application/json",
-      },
-      // Body of the request is the JSON data we created above.
-      body: JSONdata,
-    };
-
-    const response = await fetch(endpoint, options);
-    const resData = await response.json();
-
-    if (response.status === 200) {
-      console.log("Message sent.");
-      setEmailSubmitted(true);
-    }
+    emailjs
+      .sendForm(
+        process.env.NEXT_PUBLIC_SERVICE_ID,
+        process.env.NEXT_PUBLIC_TEMPLATE_ID,
+        form.current,
+        {
+          publicKey: process.env.NEXT_PUBLIC_PUBLIC_KEY,
+        }
+      )
+      .then(
+        () => {
+          setEmailSubmitted(true);
+          form.current.reset();
+        },
+        () => {
+          setError(true);
+        }
+      );
   };
+  //-----------used for sending email via EmailJS-------------------//
+
+  //-----------used for api router/resend-------------------//
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   const data = {
+  //     email: e.target.email.value,
+  //     subject: e.target.subject.value,
+  //     message: e.target.message.value,
+  //   };
+
+  //   const JSONdata = JSON.stringify(data);
+  //   const endpoint = "/api/send";
+
+  //   // Form the request for sending data to the server.
+  //   const options = {
+  //     // The method is POST because we are sending data.
+  //     method: "POST",
+  //     // Tell the server we're sending JSON.
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     // Body of the request is the JSON data we created above.
+  //     body: JSONdata,
+  //   };
+
+  //   const response = await fetch(endpoint, options);
+  //   const resData = await response.json();
+
+  //   if (response.status === 200) {
+  //     console.log("Message sent.");
+  //     setEmailSubmitted(true);
+  //   }
+  // };
+  //-----------used for api router/resend-------------------//
 
   return (
     <section
@@ -69,7 +103,7 @@ const EmailSection = () => {
         </div>
       </div>
       <div className="z-10">
-        <form className="flex flex-col" onSubmit={handleSubmit}>
+        <form className="flex flex-col" onSubmit={sendEmail} ref={form}>
           <div className="mb-6">
             <label
               htmlFor="email"
@@ -133,6 +167,14 @@ const EmailSection = () => {
             emailSubmitted && (
               <p className="text-green-500 text-sm mt-2">
                 Email sent successfully!
+              </p>
+            )
+          }
+          {
+            //if the email failed, show a error message.
+            error && (
+              <p className="text-red-500 text-sm mt-2">
+                Error sending Email, please try again.
               </p>
             )
           }
