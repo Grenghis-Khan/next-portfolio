@@ -17,10 +17,10 @@ const Footer = () => {
         >
           <Link href={"/"}>
             <Image
-              src="/DL-logo.jpg"
-              alt="Logo Image"
-              width={70}
-              height={70}
+              src="/dl-logo-trace.png"
+              alt="DigitalLyfers logo"
+              width={72}
+              height={72}
               className="rounded-full m-6"
             />
           </Link>

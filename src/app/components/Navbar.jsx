@@ -161,11 +161,11 @@ const Navbar = () => {
             //onClick={() => setNavbarOpen(false)}
           >
             <Image
-              src="/DL-logo.jpg"
-              alt="Logo Image"
-              width={50}
-              height={50}
-              className="rounded-full "
+              src="/dl-logo-trace.png"
+              alt="DigitalLyfers logo"
+              width={56}
+              height={56}
+              className="rounded-full"
             />
           </Link>
         </motion.div>
