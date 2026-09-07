@@ -10,6 +10,22 @@ const AnimatedNumbers = dynamic(
   { ssr: false }
 );
 
+// First commit of this portfolio (git log --reverse)
+const CAREER_START = { year: 2024, month: 0, day: 29 };
+
+const yearsSince = (start, now = new Date()) => {
+  let years = now.getFullYear() - start.year;
+  const beforeAnniversary =
+    now.getMonth() < start.month ||
+    (now.getMonth() === start.month && now.getDate() < start.day);
+
+  if (beforeAnniversary) {
+    years -= 1;
+  }
+
+  return Math.max(0, years);
+};
+
 const achievementsList = [
   {
     prefix: "",
@@ -30,7 +46,7 @@ const achievementsList = [
   {
     prefix: "~",
     metric: "Years",
-    value: "2",
+    value: String(yearsSince(CAREER_START)),
   },
 ];
 

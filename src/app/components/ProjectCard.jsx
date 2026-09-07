@@ -19,10 +19,9 @@ const ProjectCard = ({ imgUrl, title, description, gitUrl, previewUrl }) => {
       >
         <Image
           src={imgUrl}
-          alt="oneCTRL Image"
-          // width={300}
-          // height={300}
+          alt={title}
           fill={true}
+          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
           className="rounded-t-xl object-cover"
         />
         <div className="overlay items-center justify-center absolute top-0 left-0 w-full h-full bg-[#181818] bg-opacity-0 hidden group-hover:flex group-hover:bg-opacity-80 transition-all duration-500">
@@ -38,7 +37,7 @@ const ProjectCard = ({ imgUrl, title, description, gitUrl, previewUrl }) => {
       </div>
       <div className="text-white rounded-b-xl bg-[#161923] py-6 px-4">
         <h5 className="font-xl font-semibold mb-2">{title}</h5>
-        <p className="text-[#ADB7BE] md:h-28 lg:h-16">{description}</p>
+        <p className="text-[#ADB7BE] md:min-h-28 lg:min-h-16">{description}</p>
       </div>
     </div>
   );

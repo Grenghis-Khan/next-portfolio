@@ -14,11 +14,11 @@ const HeroSection = () => {
           transition={{ duration: 0.5 }}
           className="col-span-7 place-self-center text-center sm:text-left justify-self-start"
         >
-          <div className=" h-28 lg:h-auto">
-            <h1 className="text-white mb-4 text-4xl sm:text-5xl lg:text-6xl font-extrabold">
-              <span className="text-transparent bg-clip-text bg-gradient-to-br from-primary-500 to-secondary-600">
-                Hello I&apos;m{" "}
-              </span>
+          <h1 className="text-white mb-4 lg:mb-2 text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight">
+            <span className="text-transparent bg-clip-text bg-gradient-to-br from-primary-500 to-secondary-600">
+              Hello I&apos;m
+            </span>
+            <span className="block h-[2.5em] lg:h-[1.5em]">
               <TypeAnimation
                 sequence={[
                   "Bryan",
@@ -34,8 +34,8 @@ const HeroSection = () => {
                 speed={50}
                 repeat={Infinity}
               />
-            </h1>
-          </div>
+            </span>
+          </h1>
 
           <p className="text-[#ADB7BE] text-base sm:text-lg lg:text-xl mb-6">
             Welcome to my personal website, where creativity meets technology to
