@@ -30,7 +30,7 @@ const achievementsList = [
   {
     prefix: "",
     metric: "Projects",
-    value: "15",
+    value: "80",
     postfix: "+",
   },
   {
